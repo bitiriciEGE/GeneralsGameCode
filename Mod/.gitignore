@@ -3,3 +3,4 @@
 .Release/
 Scripts/Windows/.tools/
 __pycache__/
+.Reference/
