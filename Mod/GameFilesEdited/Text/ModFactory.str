@@ -1,0 +1,28 @@
+// MOD: Factory module texts. Merged on top of the vanilla generals.csf by the Mod Builder (item ModLanguage).
+
+//------------------------------------------------------------------------------
+// USA - War Factory
+//------------------------------------------------------------------------------
+UPGRADE:ModFactoryUSALogistics
+US: "Logistics Module"
+END
+
+CONTROLBAR:ModUpgradeFactoryUSALogistics
+US: "&Logistics Module"
+END
+
+CONTROLBAR:ModTooltipFactoryUSALogistics
+US: "This War Factory builds 25% faster. A factory can take only one module; Logistics locks out Advanced Systems. Needs an empty production queue."
+END
+
+UPGRADE:ModFactoryUSAAdvanced
+US: "Advanced Systems Module"
+END
+
+CONTROLBAR:ModUpgradeFactoryUSAAdvanced
+US: "A&dvanced Systems Module"
+END
+
+CONTROLBAR:ModTooltipFactoryUSAAdvanced
+US: "This War Factory can build the Tomahawk, Paladin and Microwave Tank. A factory can take only one module; Advanced Systems locks out Logistics. Needs an empty production queue."
+END

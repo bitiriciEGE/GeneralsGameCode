@@ -46,7 +46,8 @@ Modül adlarının hepsinin kodda var olduğu doğrulandı. "C++?" sütunu tahmi
 ### Faz 1: Sadece INI
 - [ ] Doctrine: USA (Network Warfare / Rapid Deployment), China (Combined Arms / Siege Warfare),
       GLA (Guerrilla Network / Salvage Economy). v0.1 yazıldı, oyunda test bekliyor: [DOCTRINE.md](DOCTRINE.md)
-- [ ] Fabrika uzmanlaşması: USA War Factory için Logistics / Advanced Systems
+- [ ] Fabrika uzmanlaşması: USA War Factory için Logistics / Advanced Systems. v0.1 yazıldı (bina başına üretim
+      hızı için küçük bir C++ modülüyle), oyunda test bekliyor: [FABRIKA.md](FABRIKA.md)
 - [ ] Taraf başına bir keşif/destek birimi (USA Forward Observer, China Mobile Surveillance Vehicle, GLA Spotter)
 - [ ] Birim kartlarına güçlü/zayıf bilgisi
 
@@ -58,7 +59,7 @@ Modül adlarının hepsinin kodda var olduğu doğrulandı. "C++?" sütunu tahmi
 ### Faz 3: Küçük C++ eklemeleri
 - [ ] Radar Relay görüş modülü
 - [ ] Enkaz toplama kısıtları
-- [ ] Bina başına üretim hızı
+- [x] Bina başına üretim hızı (`ProductionSpeedUpgrade`, fabrika modülleriyle birlikte)
 
 ### Faz 4: Test ve dağıtım
 - [ ] Arkadaşlarla LAN / sanal LAN testi
