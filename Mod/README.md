@@ -69,6 +69,24 @@ klasörü gösterir. Bu yüzden:
 
 Betikler oyun klasörüne yazdığı için yönetici izni ister.
 
+### INI hatalarını bulmak
+
+Release exe INI hatalarını göstermez. Oyun klasöründeki `generalszh_debug.exe` (Debug derleme) her şeyi
+`DebugLogFileD.txt` dosyasına yazar:
+
+```
+generalszh_debug.exe -win -quickstart -ignoreAsserts
+```
+
+`-ignoreAsserts` olmadan her uyarı bir pencere açıp oyunu durdurur. Debug exe'yi yeniden üretmek için:
+
+```
+cmake --preset win32-debug -DRTS_BUILD_GENERALS=OFF -DRTS_BUILD_GENERALS_TOOLS=OFF -DRTS_BUILD_ZEROHOUR_TOOLS=OFF
+cmake --build build/win32-debug --config Debug --target z_generals
+```
+
+Çıkan `build/win32-debug/GeneralsMD/Debug/generalszh.exe`, oyun klasörüne `generalszh_debug.exe` adıyla kopyalanır.
+
 ## Arkadaşlara gönderme
 
 Her oyuncunun kendi Zero Hour kopyası olmalı. Gönderilecekler:

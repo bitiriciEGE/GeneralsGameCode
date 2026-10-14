@@ -39,13 +39,13 @@ Modül adlarının hepsinin kodda var olduğu doğrulandı. "C++?" sütunu tahmi
 - [x] Visual Studio 2022 + ilk temiz derleme (`generalszh.exe`)
 - [x] Oyun kurulumu (EA App), exe'nin oyun klasörüne kurulması, açılış testi (30 sn, pencere modu)
 - [ ] Bir skirmish maçının baştan sona oynanması
-- [ ] Temel INI seti seçimi: orijinal 1.04 mi, GamePatch 1.04p mi
+- [x] Temel INI seti seçimi: orijinal 1.04 (oyunun kendi `INIZH.big` dosyası)
 - [x] Mod Builder ile boş bir modun derlenmesi
-- [ ] Mod Builder ile modun oyuna kurulup oyunla açılması
+- [x] Mod Builder ile modun oyuna kurulup oyunla açılması
 
 ### Faz 1: Sadece INI
 - [ ] Doctrine: USA (Network Warfare / Rapid Deployment), China (Combined Arms / Siege Warfare),
-      GLA (Guerrilla Network / Salvage Economy)
+      GLA (Guerrilla Network / Salvage Economy). v0.1 yazıldı, oyunda test bekliyor: [DOCTRINE.md](DOCTRINE.md)
 - [ ] Fabrika uzmanlaşması: USA War Factory için Logistics / Advanced Systems
 - [ ] Taraf başına bir keşif/destek birimi (USA Forward Observer, China Mobile Surveillance Vehicle, GLA Spotter)
 - [ ] Birim kartlarına güçlü/zayıf bilgisi

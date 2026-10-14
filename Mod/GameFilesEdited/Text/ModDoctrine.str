@@ -1,0 +1,82 @@
+// MOD: Doctrine texts. Merged on top of the vanilla generals.csf by the Mod Builder (item ModLanguage).
+
+//------------------------------------------------------------------------------
+// USA
+//------------------------------------------------------------------------------
+UPGRADE:ModDoctrineUSANetwork
+US: "Network Warfare Doctrine"
+END
+
+CONTROLBAR:ModUpgradeDoctrineUSANetwork
+US: "&Network Warfare Doctrine"
+END
+
+CONTROLBAR:ModTooltipDoctrineUSANetwork
+US: "Permanent choice, locks out Rapid Deployment. Grants the Spy Drone general power. Aircraft cost 20% less while you own a Strategy Center."
+END
+
+UPGRADE:ModDoctrineUSARapid
+US: "Rapid Deployment Doctrine"
+END
+
+CONTROLBAR:ModUpgradeDoctrineUSARapid
+US: "Rapid D&eployment Doctrine"
+END
+
+CONTROLBAR:ModTooltipDoctrineUSARapid
+US: "Permanent choice, locks out Network Warfare. Grants the Paradrop general power. Vehicles cost 15% less while you own a Strategy Center."
+END
+
+//------------------------------------------------------------------------------
+// China
+//------------------------------------------------------------------------------
+UPGRADE:ModDoctrineChinaCombined
+US: "Combined Arms Doctrine"
+END
+
+CONTROLBAR:ModUpgradeDoctrineChinaCombined
+US: "&Combined Arms Doctrine"
+END
+
+CONTROLBAR:ModTooltipDoctrineChinaCombined
+US: "Permanent choice, locks out Siege Warfare. Grants the Frenzy general power. Infantry cost 25% less while you own a Propaganda Center."
+END
+
+UPGRADE:ModDoctrineChinaSiege
+US: "Siege Warfare Doctrine"
+END
+
+CONTROLBAR:ModUpgradeDoctrineChinaSiege
+US: "&Siege Warfare Doctrine"
+END
+
+CONTROLBAR:ModTooltipDoctrineChinaSiege
+US: "Permanent choice, locks out Combined Arms. Grants the Artillery Barrage general power. Vehicles cost 10% less while you own a Propaganda Center."
+END
+
+//------------------------------------------------------------------------------
+// GLA
+//------------------------------------------------------------------------------
+UPGRADE:ModDoctrineGLAGuerrilla
+US: "Guerrilla Network Doctrine"
+END
+
+CONTROLBAR:ModUpgradeDoctrineGLAGuerrilla
+US: "&Guerrilla Network Doctrine"
+END
+
+CONTROLBAR:ModTooltipDoctrineGLAGuerrilla
+US: "Permanent choice, locks out Salvage Economy. Grants the Rebel Ambush general power. Infantry cost 20% less while you own a Palace."
+END
+
+UPGRADE:ModDoctrineGLASalvage
+US: "Salvage Economy Doctrine"
+END
+
+CONTROLBAR:ModUpgradeDoctrineGLASalvage
+US: "&Salvage Economy Doctrine"
+END
+
+CONTROLBAR:ModTooltipDoctrineGLASalvage
+US: "Permanent choice, locks out Guerrilla Network. Grants the Cash Bounty general power. Vehicles cost 15% less while you own a Palace."
+END

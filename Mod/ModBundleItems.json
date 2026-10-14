@@ -17,6 +17,23 @@
                 ]
             },
             {
+                "name": "ModLanguage",
+                "big": true,
+                "files": [
+                    {
+                        "sourceParent": ".",
+                        "multiSource": [
+                            "GameFilesOriginal/Data/English/generals.csf",
+                            "GameFilesEdited/Text/*.str"
+                        ],
+                        "target": "Data/English/generals.csf",
+                        "params": {
+                            "language": "English"
+                        }
+                    }
+                ]
+            },
+            {
                 "name": "ModMaps",
                 "big": true,
                 "files": [

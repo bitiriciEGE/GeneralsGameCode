@@ -9,6 +9,7 @@
                 "install": true,
                 "itemNames": [
                     "ModINI",
+                    "ModLanguage",
                     "ModMaps"
                 ]
             }
