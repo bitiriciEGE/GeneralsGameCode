@@ -1,3 +1,6 @@
 [submodule "GeneralsReplays"]
 	path = GeneralsReplays
 	url = https://github.com/TheSuperHackers/GeneralsReplays
+[submodule "Mod/ThirdParty/GeneralsModBuilder"]
+	path = Mod/ThirdParty/GeneralsModBuilder
+	url = https://github.com/TheSuperHackers/GeneralsModBuilder

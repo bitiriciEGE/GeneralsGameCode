@@ -1,0 +1,5 @@
+# Mod Builder outputs and downloaded tools
+.Build/
+.Release/
+Scripts/Windows/.tools/
+__pycache__/

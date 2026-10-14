@@ -1,0 +1,33 @@
+{
+    "bundles": {
+        "version": 1,
+        "itemsPrefix": "000_",
+        "itemsSuffix": "",
+        "items": [
+            {
+                "name": "ModINI",
+                "big": true,
+                "files": [
+                    {
+                        "sourceParent": "GameFilesEdited",
+                        "sourceList": [
+                            "Data/INI/**/*.ini"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ModMaps",
+                "big": true,
+                "files": [
+                    {
+                        "sourceParent": "GameFilesEdited",
+                        "sourceList": [
+                            "Maps/**/*.*"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

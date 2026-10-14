@@ -1,0 +1,67 @@
+# Yol haritası
+
+## Tasarım kuralları
+
+- Tek kaynak: para. Yeni kaynak türü yok.
+- Üç taraf (USA, China, GLA) aynı sorunu farklı kurallarla çözer; aynı sistemi üçüne birden kopyalamayız.
+- Oyuncuyu üssünden çıkaran harita kontrolü, keşif ve kalıcı stratejik seçimler.
+- Önce küçük bir prototip: tek 1v1 harita (Crossroads). Eğlenceli değilse büyütmeyiz.
+
+## Kaynaklar
+
+| Kaynak | Ne için kullanıyoruz |
+|---|---|
+| `upstream` = TheSuperHackers/GeneralsGameCode | Motor; güncellemeleri buradan çekeriz |
+| `ea-original` etiketi | EA'nın orijinal kodu. Bir dosyanın aslını görmek için: `git diff ea-original -- <dosya>` |
+| `modding` = Andreas-W/GeneralsGameCode_Modding | Hazır modlama modülleri; gerektiğinde tek tek alınır |
+| TheSuperHackers/GeneralsGamePatch | INI dosyalarının metin hali, orijinal (`GameFilesOriginalZH`) ve yamalı (`GameFilesEdited`) |
+| TheSuperHackers/GeneralsModBuilder | `.big` üretme, oyuna kurma, sürüm paketi |
+
+## Özellik → motor karşılığı
+
+Modül adlarının hepsinin kodda var olduğu doğrulandı. "C++?" sütunu tahmindir; uygulamaya geçince netleşir.
+
+| Özellik | Kullanılacak motor parçası | C++? |
+|---|---|---|
+| Doctrine (kalıcı iki yollu seçim) | `Upgrade`, `CommandSetUpgrade`, UpgradeMux `ConflictsWith` | Hayır |
+| Fabrika uzmanlaşması (iki modülden biri) | Aynı mekanizma + `CostModifierUpgrade` | Bina başına üretim hızı için muhtemelen evet |
+| Yıkılabilir köprü / kaya / bina | `BridgeBehavior`, `RebuildHoleBehavior`, harita objeleri | Hayır |
+| Enkaz toplama | `CreateCrateDie`, `SalvageCrateCollide`, `MoneyCrateCollide` | Toplayıcıyı Dozer/Worker ile sınırlamak için belki |
+| Radar Relay (içinde piyade varken bölgeyi açar) | `GarrisonContain` + görüş | Muhtemelen küçük bir modül |
+| Yeni birimler | `Object`, `Weapon`, `CommandSet` INI'leri; mevcut modeller | Hayır |
+| Birim kartında "güçlü / zayıf" bilgisi | Tooltip metinleri | Hayır |
+
+## Fazlar
+
+### Faz 0: Altyapı
+- [x] Fork: `bitiriciEGE/GeneralsGameCode`
+- [x] Mod Builder entegrasyonu (`Mod/`)
+- [ ] Visual Studio 2022 + ilk temiz derleme (`generalszh.exe`)
+- [ ] Oyun kurulumu, exe'nin oyun klasörüne kurulması, açılış testi
+- [ ] Temel INI seti seçimi: orijinal 1.04 mi, GamePatch 1.04p mi
+- [ ] Mod Builder ile boş bir modun derlenip kurulması
+
+### Faz 1: Sadece INI
+- [ ] Doctrine: USA (Network Warfare / Rapid Deployment), China (Combined Arms / Siege Warfare),
+      GLA (Guerrilla Network / Salvage Economy)
+- [ ] Fabrika uzmanlaşması: USA War Factory için Logistics / Advanced Systems
+- [ ] Taraf başına bir keşif/destek birimi (USA Forward Observer, China Mobile Surveillance Vehicle, GLA Spotter)
+- [ ] Birim kartlarına güçlü/zayıf bilgisi
+
+### Faz 2: Crossroads haritası (WorldBuilder)
+- [ ] Ortada Radar Relay (geçici olarak mevcut bir tech binasıyla)
+- [ ] Kanatlarda kayalarla kapalı kısa yollar ve petrol kuleleri
+- [ ] Yıkılabilir köprü
+
+### Faz 3: Küçük C++ eklemeleri
+- [ ] Radar Relay görüş modülü
+- [ ] Enkaz toplama kısıtları
+- [ ] Bina başına üretim hızı
+
+### Faz 4: Test ve dağıtım
+- [ ] Arkadaşlarla LAN / sanal LAN testi
+- [ ] `BuildRelease.bat` + exe ile sürüm paketi, GitHub Release
+
+### Sonra
+Kalan yeni birimler (Bradley, ZBD, Command Tank, Mortar Team, Scavenger Team, EW Stryker), Urban Concealment
+bölgeleri, taraf bazlı görüş ağları.

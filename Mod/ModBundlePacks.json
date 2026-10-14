@@ -1,0 +1,17 @@
+{
+    "bundles": {
+        "version": 1,
+        "packsPrefix": "",
+        "packsSuffix": "_v0.1",
+        "packs": [
+            {
+                "name": "ModCore",
+                "install": true,
+                "itemNames": [
+                    "ModINI",
+                    "ModMaps"
+                ]
+            }
+        ]
+    }
+}
