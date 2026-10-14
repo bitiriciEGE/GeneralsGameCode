@@ -48,6 +48,7 @@ class GrantUpgradeCreateModuleData : public CreateModuleData
 public:
 	AsciiString		m_upgradeName;			///< name of the upgrade to be granted.
 	ObjectStatusMaskType m_exemptStatus; ///< do not execute if this status is set in the object
+	Bool					m_onlyForComputerPlayers; ///< MOD: only grant when the object belongs to an AI player
 
 	GrantUpgradeCreateModuleData();
 	static void buildFieldParse(MultiIniFieldParse& p);
@@ -72,5 +73,7 @@ public:
 	virtual void onBuildComplete() override;	///< This is called when you are a finished game object
 
 protected:
+
+	Bool isGrantAllowed() const; ///< MOD: checks OnlyForComputerPlayers
 
 };

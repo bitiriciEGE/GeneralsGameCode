@@ -387,6 +387,7 @@ set(GAMEENGINE_SRC
     Include/GameLogic/Module/PreorderCreate.h
     Include/GameLogic/Module/PrisonBehavior.h
     Include/GameLogic/Module/PrisonDockUpdate.h
+    Include/GameLogic/Module/ProductionSpeedUpgrade.h
     Include/GameLogic/Module/ProductionUpdate.h
     Include/GameLogic/Module/ProjectileStreamUpdate.h
     Include/GameLogic/Module/ProneUpdate.h
@@ -1058,6 +1059,7 @@ set(GAMEENGINE_SRC
     Source/GameLogic/Object/Upgrade/ObjectCreationUpgrade.cpp
     Source/GameLogic/Object/Upgrade/PassengersFireUpgrade.cpp
     Source/GameLogic/Object/Upgrade/PowerPlantUpgrade.cpp
+    Source/GameLogic/Object/Upgrade/ProductionSpeedUpgrade.cpp
     Source/GameLogic/Object/Upgrade/RadarUpgrade.cpp
     Source/GameLogic/Object/Upgrade/ReplaceObjectUpgrade.cpp
     Source/GameLogic/Object/Upgrade/StatusBitsUpgrade.cpp

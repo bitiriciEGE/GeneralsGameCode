@@ -41,6 +41,7 @@
 // ------------------------------------------------------------------------------------------------
 GrantUpgradeCreateModuleData::GrantUpgradeCreateModuleData()
 {
+	m_onlyForComputerPlayers = FALSE;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -53,6 +54,7 @@ void GrantUpgradeCreateModuleData::buildFieldParse(MultiIniFieldParse& p)
 	{
 		{ "UpgradeToGrant",	INI::parseAsciiString,							nullptr, offsetof( GrantUpgradeCreateModuleData, m_upgradeName ) },
 		{ "ExemptStatus",		ObjectStatusMaskType::parseFromINI, nullptr, offsetof( GrantUpgradeCreateModuleData, m_exemptStatus ) },
+		{ "OnlyForComputerPlayers",	INI::parseBool,				nullptr, offsetof( GrantUpgradeCreateModuleData, m_onlyForComputerPlayers ) },
 		{ nullptr, nullptr, nullptr, 0 }
 	};
 
@@ -81,6 +83,9 @@ GrantUpgradeCreate::~GrantUpgradeCreate()
 //-------------------------------------------------------------------------------------------------
 void GrantUpgradeCreate::onCreate()
 {
+
+	if( !isGrantAllowed() )
+		return;
 
 	ObjectStatusMaskType exemptStatus = getGrantUpgradeCreateModuleData()->m_exemptStatus;
 	ObjectStatusMaskType currentStatus = getObject()->getStatusBits();
@@ -121,6 +126,9 @@ void GrantUpgradeCreate::onBuildComplete()
 
 	CreateModule::onBuildComplete(); // extend
 
+	if( !isGrantAllowed() )
+		return;
+
 	const UpgradeTemplate *upgradeTemplate = TheUpgradeCenter->findUpgrade( getGrantUpgradeCreateModuleData()->m_upgradeName );
 	if( !upgradeTemplate )
 	{
@@ -138,6 +146,19 @@ void GrantUpgradeCreate::onBuildComplete()
 	{
 		getObject()->giveUpgrade( upgradeTemplate );
 	}
+}
+
+//-------------------------------------------------------------------------------------------------
+/** MOD: OnlyForComputerPlayers lets AI players skip choices the skirmish AI cannot make, such as
+	* a factory add-on module. */
+//-------------------------------------------------------------------------------------------------
+Bool GrantUpgradeCreate::isGrantAllowed() const
+{
+	if( !getGrantUpgradeCreateModuleData()->m_onlyForComputerPlayers )
+		return TRUE;
+
+	const Player *player = getObject()->getControllingPlayer();
+	return player != nullptr && player->getPlayerType() == PLAYER_COMPUTER;
 }
 
 // ------------------------------------------------------------------------------------------------

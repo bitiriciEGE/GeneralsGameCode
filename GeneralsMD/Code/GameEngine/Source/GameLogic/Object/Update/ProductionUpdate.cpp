@@ -195,6 +195,7 @@ ProductionUpdate::ProductionUpdate( Thing *thing, const ModuleData* moduleData )
 	m_setFlags.clear();
 	m_flagsDirty = FALSE;
 	m_specialPowerConstructionCommandButton = nullptr;
+	m_productionSpeedScalar = 1.0f;
 
 }
 
@@ -668,6 +669,10 @@ UpdateSleepTime ProductionUpdate::update()
 		totalProductionFrames = production->m_objectToProduce->calcTimeToBuild( player );
 	else
 		totalProductionFrames = production->m_upgradeToResearch->calcTimeToBuild( player );
+
+	// MOD: per building production speed, set by ProductionSpeedUpgrade
+	if( m_productionSpeedScalar != 1.0f )
+		totalProductionFrames = max( 1, (Int)REAL_TO_INT_CEIL( INT_TO_REAL( totalProductionFrames ) / m_productionSpeedScalar ) );
 
 	// figure out our percent complete
 	production->m_percentComplete = INT_TO_REAL( production->m_framesUnderConstruction ) /
@@ -1254,13 +1259,15 @@ void ProductionUpdate::crc( Xfer *xfer )
 // ------------------------------------------------------------------------------------------------
 /** Xfer method
 	* Version Info:
-	* 1: Initial version */
+	* 1: Initial version
+	* 2: MOD: m_productionSpeedScalar. Not guarded by RETAIL_COMPATIBLE_XFER_SAVE because the mod
+	*    needs it in saves; version 1 saves still load. */
 // ------------------------------------------------------------------------------------------------
 void ProductionUpdate::xfer( Xfer *xfer )
 {
 
 	// version
-	XferVersion currentVersion = 1;
+	XferVersion currentVersion = 2;
 	XferVersion version = currentVersion;
 	xfer->xferVersion( &version, currentVersion );
 
@@ -1424,6 +1431,10 @@ void ProductionUpdate::xfer( Xfer *xfer )
 
 	// flags dirty
 	xfer->xferBool( &m_flagsDirty );
+
+	// production speed
+	if( version >= 2 )
+		xfer->xferReal( &m_productionSpeedScalar );
 
 }
 

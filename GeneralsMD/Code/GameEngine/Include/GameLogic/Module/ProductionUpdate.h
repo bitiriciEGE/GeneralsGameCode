@@ -229,6 +229,9 @@ public:
 
 	virtual UpdateSleepTime update() override;					///< the update
 
+	// MOD: production runs this many times faster in this building; scalars from several upgrades multiply
+	void scaleProductionSpeed( Real scalar ) { m_productionSpeedScalar *= scalar; }
+
 	//These functions keep track of the special power construction of a new building via a special power instead of standard production interface.
 	//This was added for the sneak attack building functionality.
 	virtual const CommandButton* getSpecialPowerConstructionCommandButton() const override { return m_specialPowerConstructionCommandButton; }
@@ -265,5 +268,6 @@ protected:
 	ModelConditionFlags m_clearFlags;										///< flags to clear from model
 	ModelConditionFlags m_setFlags;											///< flags to set in model
 	Bool								m_flagsDirty;										///< clearFlags/setFlags needs to be set into the model
+	Real								m_productionSpeedScalar;				///< MOD: production speed multiplier of this building (1 = normal)
 
 };
