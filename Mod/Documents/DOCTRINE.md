@@ -52,6 +52,14 @@ ise o objenin bulunduğu dosyanın tamamını kopyalamak gerekir.
 
 ## Test listesi
 
+2026-10-15 debug exe ile oyunda denendi:
+
+- USA: 1-6 çalışıyor (Rapid Deployment: Paradrop 1. rütbede geldi, Crusader $765, Strategy Center satılınca $900,
+  yeniden kurulunca $765 ve seçili doktrin geri geldi).
+- China: 1, tek Propaganda Center sınırı ve "önce mayın" sırası çalışıyor (Land Mines sonrası Neutron Mines butonu
+  geldi, doktrin butonları kaldı). Doktrin sonrası denenmedi.
+- GLA: denenmedi.
+
 Her taraf için bir skirmish maçında:
 
 1. Doktrin binasını kur. İki doktrin butonu da görünmeli ve tooltip'leri okunmalı.

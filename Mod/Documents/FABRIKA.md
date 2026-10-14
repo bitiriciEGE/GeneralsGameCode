@@ -49,6 +49,9 @@ zinciri).
 
 ## Test listesi
 
+2026-10-15 debug exe ile oyunda denendi: 1-5 çalışıyor. Logistics'li fabrika aynı Crusader'ı Advanced'li fabrikanın
+yaklaşık 0,76 katı sürede üretti (beklenen 0,8). AI'nın fabrikaya modülü aldığı debug kaydında görüldü. 6 denenmedi.
+
 1. War Factory kur. Tomahawk, Paladin, Microwave butonları yok; iki modül butonu var.
 2. Sırada araç varken modül butonları kilitli olmalı. Boş sırada Logistics'i başlat: Advanced kilitlenmeli.
 3. Logistics bitince Advanced butonu kaybolmalı. Crusader üretimi yaklaşık 8 saniye sürmeli.
