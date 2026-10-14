@@ -60,7 +60,16 @@ Modül adlarının hepsinin kodda var olduğu doğrulandı. "C++?" sütunu tahmi
 
 ### Faz 3: Küçük C++ eklemeleri
 - [ ] Radar Relay görüş modülü
-- [ ] Enkaz toplama kısıtları
+- [ ] Enkaz toplama. Plan (2026-10-15, kod yazılmadı):
+      - C++: `GameData`'ya `ModWreckCrateData` alanı. `Object::onDie` (Object.cpp ~4729, die modüllerinden sonra)
+        `VEHICLE` olan, `AIRCRAFT`/`DRONE` olmayan, yarım inşaat olmayan ve müttefikçe öldürülmemiş nesneler için bu
+        sandığı bıraksın. Sandığı yerleştirme kodu `CreateCrateDie::createCrate`'ten statik bir yardımcıya taşınıp
+        ortak kullanılsın. Yeni modül olmadığı için `MemoryInit` havuzu gerekmez.
+      - INI: `Data/INI/GameData/ModWreck.ini` (alan), `Data/INI/Crate/ModWreck.ini` (`CrateData ModWreckCrateData`,
+        CreationChance 1.0), `Data/INI/Object/ModWreck.ini` (`ModWreckCrate`, model `PMJnkCrate`, `DeletionUpdate`
+        30 sn). Üç `MoneyCrateCollide`: `RequiredKindOf = DOZER` ve `PickupScience` SCIENCE_AMERICA / CHINA / GLA
+        ile $50 / $100 / $150. Worker ve Dozer'ların üçü de `DOZER`.
+      - Orijinal GLA `SalvageCrateData` (sadece GLA salvager öldürünce) olduğu gibi kalır.
 - [x] Bina başına üretim hızı (`ProductionSpeedUpgrade`, fabrika modülleriyle birlikte)
 
 ### Faz 4: Test ve dağıtım
