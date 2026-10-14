@@ -48,8 +48,10 @@ Modül adlarının hepsinin kodda var olduğu doğrulandı. "C++?" sütunu tahmi
       GLA (Guerrilla Network / Salvage Economy). v0.1 yazıldı, oyunda test bekliyor: [DOCTRINE.md](DOCTRINE.md)
 - [ ] Fabrika uzmanlaşması: USA War Factory için Logistics / Advanced Systems. v0.1 yazıldı (bina başına üretim
       hızı için küçük bir C++ modülüyle), oyunda test bekliyor: [FABRIKA.md](FABRIKA.md)
-- [ ] Taraf başına bir keşif/destek birimi (USA Forward Observer, China Mobile Surveillance Vehicle, GLA Spotter)
-- [ ] Birim kartlarına güçlü/zayıf bilgisi
+- [ ] Taraf başına bir keşif/destek birimi (USA Forward Observer, China Mobile Surveillance Vehicle, GLA Spotter).
+      v0.1 yazıldı, oyunda test bekliyor: [KESIF_BIRIMLERI.md](KESIF_BIRIMLERI.md)
+- [x] Birim kartlarına güçlü/zayıf bilgisi: orijinal oyunda zaten var ("Strong vs. / Weak vs." tooltip satırları);
+      yeni birimlerin açıklamalarına da eklendi
 
 ### Faz 2: Crossroads haritası (WorldBuilder)
 - [ ] Ortada Radar Relay (geçici olarak mevcut bir tech binasıyla)

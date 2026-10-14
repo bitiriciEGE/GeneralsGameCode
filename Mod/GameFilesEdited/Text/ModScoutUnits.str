@@ -1,0 +1,54 @@
+// MOD: Scout unit texts. Merged on top of the vanilla generals.csf by the Mod Builder (item ModLanguage).
+
+//------------------------------------------------------------------------------
+// USA Forward Observer
+//------------------------------------------------------------------------------
+OBJECT:ModForwardObserver
+US: "Forward Observer"
+END
+
+CONTROLBAR:ModConstructForwardObserver
+US: "Forward &Observer"
+END
+
+CONTROLBAR:ModTooltipBuildForwardObserver
+US: "Laser-marks a target: everything shooting at it fires 50% faster, until 10 seconds after the mark. Stealthed while standing still, revealed while marking.\n\nStrong vs. nothing on its own\nWeak vs. everything"
+END
+
+//------------------------------------------------------------------------------
+// China Mobile Surveillance Vehicle
+//------------------------------------------------------------------------------
+OBJECT:ModSurveillanceVehicle
+US: "Mobile Surveillance Vehicle"
+END
+
+CONTROLBAR:ModConstructSurveillanceVehicle
+US: "Mobile Su&rveillance Vehicle"
+END
+
+CONTROLBAR:ModTooltipBuildSurveillanceVehicle
+US: "Fragile recon vehicle. Its Surveillance Sweep reveals a target area for a short time.\n\nStrong vs. nothing\nWeak vs. everything"
+END
+
+CONTROLBAR:ModSurveillanceSweep
+US: "Surveillance S&weep"
+END
+
+CONTROLBAR:ModTooltipSurveillanceSweep
+US: "Reveals the target area for a short time. Reloads in 45 seconds."
+END
+
+//------------------------------------------------------------------------------
+// GLA Spotter
+//------------------------------------------------------------------------------
+OBJECT:ModSpotter
+US: "Spotter"
+END
+
+CONTROLBAR:ModConstructSpotter
+US: "S&potter"
+END
+
+CONTROLBAR:ModTooltipBuildSpotter
+US: "Unarmed scout with long sight, stealthed while standing still. Its sight lets SCUD Launchers fire at their full range.\n\nStrong vs. nothing\nWeak vs. everything"
+END

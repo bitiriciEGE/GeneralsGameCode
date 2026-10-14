@@ -36,7 +36,12 @@ def main():
     buttons = definitions("CommandButton", [f"{REF}/CommandButton.ini"] + glob.glob(f"{MOD}/CommandButton/*.ini"))
     sets = definitions("CommandSet", [f"{REF}/CommandSet.ini"] + glob.glob(f"{MOD}/CommandSet/*.ini"))
     sciences = definitions("Science", [f"{REF}/Science.ini"])
-    images = definitions("MappedImage", glob.glob(f"{REF}/MappedImages/**/*.ini", recursive=True))
+    weapons = definitions("Weapon", [f"{REF}/Weapon.ini"] + glob.glob(f"{MOD}/Weapon/*.ini"))
+    powers = definitions("SpecialPower", [f"{REF}/SpecialPower.ini"] + glob.glob(f"{MOD}/SpecialPower/*.ini"))
+    ocls = definitions("ObjectCreationList", [f"{REF}/ObjectCreationList.ini"] + glob.glob(f"{MOD}/ObjectCreationList/*.ini"))
+    objects = definitions("Object", glob.glob(f"{REF}/Object/*.ini") + glob.glob(f"{MOD}/Object/*.ini"))
+    # Image names are looked up case-insensitively (vanilla uses SAPathfinder1 for SAPathFinder1).
+    images = {name.lower() for name in definitions("MappedImage", glob.glob(f"{REF}/MappedImages/**/*.ini", recursive=True))}
 
     problems = []
 
@@ -74,12 +79,26 @@ def main():
                 m = re.match(r"\s*GrantScience\s*=\s*(\S+)", line)
                 if m:
                     check(m.group(1), sciences, "Science", where)
-                m = re.match(r"\s*ButtonImage\s*=\s*(\S+)", line)
+                m = re.match(r"\s*Weapon\s*=\s*\w+\s+(\S+)", line)
+                if m and m.group(1) != "NONE":
+                    check(m.group(1), weapons, "Weapon", where)
+                m = re.match(r"\s*(SpecialPowerTemplate|SpecialPower)\s*=\s*(\S+)", line)
                 if m:
-                    check(m.group(1), images, "MappedImage", where)
+                    check(m.group(2), powers, "SpecialPower", where)
+                m = re.match(r"\s*OCL\s*=\s*(\S+)\s*$", line)
+                if m:
+                    check(m.group(1), ocls, "ObjectCreationList", where)
+                m = re.match(r"\s*Object\s*=\s*(.+)", line)
+                if m:
+                    for name in m.group(1).split():
+                        check(name, objects, "Object", where)
+                m = re.match(r"\s*(ButtonImage|SelectPortrait)\s*=\s*(\S+)", line)
+                if m and m.group(2).lower() not in images:
+                    problems.append(f"{where}: MappedImage '{m.group(2)}' is not defined")
 
     print(f"upgrades={len(upgrades)} buttons={len(buttons)} command sets={len(sets)} "
-          f"sciences={len(sciences)} images={len(images)}")
+          f"sciences={len(sciences)} images={len(images)} weapons={len(weapons)} "
+          f"special powers={len(powers)} OCLs={len(ocls)} objects={len(objects)}")
     if problems:
         print("\n".join(problems))
         return 1
