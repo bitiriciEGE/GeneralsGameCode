@@ -18,7 +18,7 @@ TheSuperHackers/GeneralsGameCode fork'unun içindedir.
 
 ## Gereksinimler
 
-- Zero Hour kurulu olmalı (Steam: *Command & Conquer The Ultimate Collection*).
+- Zero Hour kurulu olmalı (Steam ya da EA App: *Command & Conquer The Ultimate Collection*).
 - Bu depodan derlenmiş `generalszh.exe`, oyun klasörüne kurulmuş olmalı (aşağıya bak).
 - İlk çalıştırmada Mod Builder kendi Python ortamını ve araçlarını (`crunch`, `gametextcompiler`,
   `generalsbigcreator`) indirir; ayrıca bir şey kurmak gerekmez.
@@ -28,12 +28,35 @@ TheSuperHackers/GeneralsGameCode fork'unun içindedir.
 "x86 Native Tools Command Prompt for VS 2022" içinde, deponun kök klasöründe:
 
 ```
-cmake --workflow --preset win32
+cmake --preset win32 -DRTS_BUILD_GENERALS=OFF -DRTS_BUILD_GENERALS_TOOLS=OFF "-DRTS_INSTALL_PREFIX_ZEROHOUR=<ZH klasörü>"
+cmake --build build/win32 --config Release
 cmake --install build/win32 --config Release
 ```
 
-`install`, oyunun klasörünü kayıt defterinden bulur ve `generalszh.exe` dosyasını oraya kopyalar. Klasör ilk
-`cmake --preset` adımında okunur; oyunu derlemeden sonra kurduysan `build/win32` klasörünü silip yeniden derle.
+- `RTS_BUILD_GENERALS=OFF`: sadece Zero Hour derlenir, süre yarıya iner.
+- `RTS_INSTALL_PREFIX_ZEROHOUR`: `INIZH.big` dosyasının bulunduğu klasör. Verilmezse kayıt defterinden okunur ve ilk
+  `cmake --preset` adımında önbelleğe yazılır.
+- `install`, `generalszh.exe` ve `WorldBuilderZH.exe` yanında araçları ve `DebugWindow.dll` / `ParticleEditor.dll`
+  dosyalarını da kopyalar. Bu iki DLL EA'nın aynı adlı dosyalarının üzerine yazar; EA'nın kopyaları
+  `*.dll.ea-orijinal` olarak yedeklendi. Normal oyunda yüklenmezler, sadece `-scriptDebug` / `-particleEdit` ile.
+
+### EA App kurulumu
+
+EA App, Zero Hour'ı kurulum klasörünün **içindeki** `Command and Conquer Generals Zero Hour` alt klasörüne kurar
+(temel Generals dosyaları onun içindeki `ZH_Generals` klasöründedir). Kayıt defterindeki `InstallPath` ise bir üst
+klasörü gösterir. Bu yüzden:
+
+- CMake'e ZH klasörü `RTS_INSTALL_PREFIX_ZEROHOUR` ile elle verilir (yukarıda).
+- Mod Builder'a da elle verilir: `%LOCALAPPDATA%\TheSuperHackers\GeneralsModBuilder\UserSettings.json`
+
+```json
+{
+    "userRunner": {
+        "version": 1,
+        "gameInstallPath": "D:/Command and Conquer Generals Zero Hour/Command and Conquer Generals Zero Hour"
+    }
+}
+```
 
 ## Modu deneme
 
@@ -50,8 +73,10 @@ Betikler oyun klasörüne yazdığı için yönetici izni ister.
 
 Her oyuncunun kendi Zero Hour kopyası olmalı. Gönderilecekler:
 
-1. Bizim derlediğimiz `generalszh.exe` (ve yanındaki DLL'ler varsa).
+1. Bizim derlediğimiz `generalszh.exe`. ZH klasörüne (`INIZH.big` ile aynı yere) kopyalanır.
 2. `BuildRelease.bat` çıktısındaki mod `.big` dosyaları.
+3. Exe, Microsoft Visual C++ 2015-2022 çalışma zamanını (x86) ister (`VCRUNTIME140.dll`, `MSVCP140.dll`). Arkadaşın
+   bilgisayarında yoksa Microsoft'un "Visual C++ Redistributable x86" paketini kurması gerekir.
 
 Multiplayer'da herkes **aynı exe ve aynı mod sürümünü** kullanmalı; yoksa oyun eşleşmez.
 EA şartları gereği mod ücretsiz dağıtılır ve tanıtımında C&C logoları kullanılmaz.

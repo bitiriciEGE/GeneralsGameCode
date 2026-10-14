@@ -36,10 +36,12 @@ Modül adlarının hepsinin kodda var olduğu doğrulandı. "C++?" sütunu tahmi
 ### Faz 0: Altyapı
 - [x] Fork: `bitiriciEGE/GeneralsGameCode`
 - [x] Mod Builder entegrasyonu (`Mod/`)
-- [ ] Visual Studio 2022 + ilk temiz derleme (`generalszh.exe`)
-- [ ] Oyun kurulumu, exe'nin oyun klasörüne kurulması, açılış testi
+- [x] Visual Studio 2022 + ilk temiz derleme (`generalszh.exe`)
+- [x] Oyun kurulumu (EA App), exe'nin oyun klasörüne kurulması, açılış testi (30 sn, pencere modu)
+- [ ] Bir skirmish maçının baştan sona oynanması
 - [ ] Temel INI seti seçimi: orijinal 1.04 mi, GamePatch 1.04p mi
-- [ ] Mod Builder ile boş bir modun derlenip kurulması
+- [x] Mod Builder ile boş bir modun derlenmesi
+- [ ] Mod Builder ile modun oyuna kurulup oyunla açılması
 
 ### Faz 1: Sadece INI
 - [ ] Doctrine: USA (Network Warfare / Rapid Deployment), China (Combined Arms / Siege Warfare),
