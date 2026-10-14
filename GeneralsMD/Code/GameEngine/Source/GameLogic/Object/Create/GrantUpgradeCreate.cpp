@@ -32,6 +32,7 @@
 
 #define DEFINE_OBJECT_STATUS_NAMES
 #include "Common/Player.h"
+#include "Common/ThingTemplate.h"
 #include "Common/Upgrade.h"
 #include "Common/Xfer.h"
 #include "GameLogic/Module/GrantUpgradeCreate.h"
@@ -158,7 +159,9 @@ Bool GrantUpgradeCreate::isGrantAllowed() const
 		return TRUE;
 
 	const Player *player = getObject()->getControllingPlayer();
-	return player != nullptr && player->getPlayerType() == PLAYER_COMPUTER;
+	const Bool allowed = player != nullptr && player->getPlayerType() == PLAYER_COMPUTER;
+	DEBUG_LOG(( "GrantUpgradeCreate OnlyForComputerPlayers on %s: %s", getObject()->getTemplate()->getName().str(), allowed ? "allowed" : "skipped" ));
+	return allowed;
 }
 
 // ------------------------------------------------------------------------------------------------

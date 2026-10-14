@@ -197,6 +197,7 @@ static PoolSizeRec PoolSizes[] =
 	{ "PoisonedBehavior", 512, 64 },
 	{ "ProductionEntry", 32, 32 },
 	{ "ProductionUpdate", 256, 32 },
+	{ "ProductionSpeedUpgrade", 32, 32 }, // MOD
 	{ "ProjectileStreamUpdate", 32, 32 },
 	{ "ProneUpdate", 128, 32 },
 	{ "QueueProductionExitUpdate", 32, 32 },
